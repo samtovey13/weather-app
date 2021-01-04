@@ -1,4 +1,4 @@
-import '../App.css';
+import '../styles/App.css';
 import React from 'react';
 import PropTypes from 'prop-types';
 import LocationDetails from './location-details';
@@ -20,7 +20,22 @@ App.propTypes = {
     city: PropTypes.string,
     country: PropTypes.string,
   }).isRequired,
-  forecasts: PropTypes.array.isRequired,
+  forecasts: PropTypes.arrayOf(
+    PropTypes.shape({
+      date: PropTypes.number,
+      temperature: PropTypes.shape({
+        max: PropTypes.number,
+        min: PropTypes.number
+      }),
+      wind: PropTypes.shape({
+        speed: PropTypes.number,
+        direction: PropTypes.string
+      }),
+      humidity: PropTypes.number,
+      description: PropTypes.string,
+      icon: PropTypes.number
+    })
+  ).isRequired,
 };
 
 export default App;

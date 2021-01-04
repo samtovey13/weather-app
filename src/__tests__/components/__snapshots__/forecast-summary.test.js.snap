@@ -8,17 +8,17 @@ exports[`ForecastSummary renders correctly 1`] = `
     <span
       class="date"
     >
-      123456789
+      1525046400000
     </span>
     <span
       class="icon"
     >
-      684
+      721
     </span>
     <span
       class="description"
     >
-      mockDescription
+      Hazy
     </span>
     <span
       class="temperature"

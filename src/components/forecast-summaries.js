@@ -21,7 +21,7 @@ const ForecastSummaries = props => (
 
 ForecastSummary.propTypes = {
   date: PropTypes.number.isRequired,
-  icon: PropTypes.number.isRequired,
+  icon: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   temperature: PropTypes.number.isRequired,
 };

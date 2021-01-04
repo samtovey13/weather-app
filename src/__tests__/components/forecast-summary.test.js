@@ -7,10 +7,10 @@ describe("ForecastSummary", () => {
   it("renders correctly", () => {
     const { asFragment } = render(
       <ForecastSummary
-        date={123456789}
-        temperature={10}
-        description="mockDescription"
-        icon={684}
+        date={1525046400000} 
+        icon="721"
+        description="Hazy" 
+        temperature={10} 
       />
     );
 
@@ -21,7 +21,7 @@ describe("ForecastSummary", () => {
     const { getByText } = render(
       <ForecastSummary 
         date={1525046400000} 
-        icon={721} 
+        icon="721"
         description="Hazy" 
         temperature={10} 
       />

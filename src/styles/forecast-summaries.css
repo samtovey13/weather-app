@@ -1,0 +1,7 @@
+.forecast-summaries {
+  display: flex;
+  justify-content: space-between;
+}
+span {
+  display: block;
+}

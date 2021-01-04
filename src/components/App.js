@@ -33,7 +33,7 @@ App.propTypes = {
       }),
       humidity: PropTypes.number,
       description: PropTypes.string,
-      icon: PropTypes.number
+      icon: PropTypes.string
     })
   ).isRequired,
 };

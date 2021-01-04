@@ -1,12 +1,12 @@
 import React from 'react';
-import render from 'react-dom';
+import ReactDOM from 'react-dom';
 import App from './components/App';
-import { location } from './data/forecast.json';
+import { location, forecasts } from './data/forecast.json';
 // import './index.css';
 // import reportWebVitals from './reportWebVitals';
 
-render(
-  <App location={location}/>,
+ReactDOM.render(
+  <App location={location} forecasts={forecasts} />,
   document.getElementById('root')
 );
 

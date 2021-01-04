@@ -7,24 +7,33 @@ exports[`ForecastSummary renders correctly 1`] = `
   >
     <span
       class="date"
+      data-testid="date-id"
     >
       1525046400000
     </span>
     <span
-      class="icon"
+      class="temperature"
+      data-testid="temperature-id"
     >
-      721
+      10°c
     </span>
     <span
       class="description"
+      data-testid="description-id"
     >
       Hazy
     </span>
     <span
-      class="temperature"
+      class="icon"
+      data-testid="icon-id"
     >
-      10
+      721
     </span>
+    <button
+      value="1525046400000"
+    >
+      More Details
+    </button>
   </div>
 </DocumentFragment>
 `;

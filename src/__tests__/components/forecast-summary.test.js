@@ -30,7 +30,7 @@ describe("ForecastSummary", () => {
     expect(getByText(1525046400000)).toHaveClass("date");
     expect(getByText("721")).toHaveClass("icon");
     expect(getByText("Hazy")).toHaveClass("description");
-    expect(getByText("10")).toHaveClass("temperature");
+    expect(getByText("10°c")).toHaveClass("temperature");
 
   });
 })

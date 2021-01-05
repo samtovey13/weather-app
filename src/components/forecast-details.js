@@ -3,30 +3,25 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 import '../styles/forecast-details.css';
 
-const ForecastDetails = ({
-  date,
-  temperature,
-  humidity,
-  wind
-}) => {
+const ForecastDetails = ({ forecast }) => {
   return <div className="forecast-details">
     <span className="date" data-testid="date-id">
-      {moment(date).format("ddd Do MMM")}
+      {moment(forecast.date).format("ddd Do MMM")}
     </span>
     <span className="min-temperature" data-testid="min-temperature-id">
-      Min temp: {temperature.min}&deg;c
+      Min temp: {forecast.temperature.min}&deg;c
     </span>
     <span className="max-temperature" data-testid="max-temperature-id">
-      Max temp: {temperature.max}&deg;c
+      Max temp: {forecast.temperature.max}&deg;c
     </span>
     <span className="humidity" data-testid="humidity-id">
-      Humidity: {humidity}%
+      Humidity: {forecast.humidity}%
     </span>
     <span className="wind-speed" data-testid="wind-speed-id">
-      Wind speed: {wind.speed}mph
+      Wind speed: {forecast.wind.speed}mph
     </span>
     <span className="wind-direction" data-testid="wind-direction-id">
-      Wind direction: {wind.direction.toUpperCase()}
+      Wind direction: {forecast.wind.direction.toUpperCase()}
     </span>
   </div>
 };

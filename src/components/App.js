@@ -15,10 +15,7 @@ const App = props => {
       forecasts={props.forecasts} 
     />
     <ForecastDetails 
-      date={props.forecasts[0].date}
-      temperature={props.forecasts[0].temperature}
-      humidity={props.forecasts[0].humidity}
-      wind={props.forecasts[0].wind} 
+      forecast={props.forecasts[0]}
     />
   </div>
 };

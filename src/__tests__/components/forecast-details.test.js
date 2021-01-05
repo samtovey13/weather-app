@@ -1,7 +1,6 @@
 import React from "react";
 import { render } from "@testing-library/react";
 import ForecastDetails from '../../components/forecast-details';
-import ForecastSummaries from "../../components/forecast-summaries";
 
 describe("ForecastDetails", () => {
 
@@ -20,26 +19,14 @@ describe("ForecastDetails", () => {
 
   it("renders correctly", () => {
 
-    const { asFragment } = render(<ForecastDetails 
-      date={forecast.date}
-      temperature={forecast.temperature}
-      humidity={forecast.humidity}
-      wind={forecast.wind}
-    />);
+    const { asFragment } = render(<ForecastDetails forecast={forecast} />);
     
     expect(asFragment()).toMatchSnapshot();
   })
 
   it("renders the correct date, icon, description and temperature props", () => {
-    
-    const { getByText } = render(
-      <ForecastDetails 
-      date={forecast.date}
-      temperature={forecast.temperature}
-      humidity={forecast.humidity}
-      wind={forecast.wind} 
-      />
-    );
+
+    const { getByText } = render(<ForecastDetails forecast={forecast} />);
 
     expect(getByText("Wed 2nd May")).toHaveClass("date");
     expect(getByText("Min temp: 0°c")).toHaveClass("min-temperature");

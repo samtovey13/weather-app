@@ -1,5 +1,5 @@
 import React from 'react';
-import { getByTestId, render } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import ForecastSummary from '../../components/forecast-summary';
 
 describe("ForecastSummary", () => {

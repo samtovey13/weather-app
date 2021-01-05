@@ -1,0 +1,10 @@
+.forecast-details {
+  display: block;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right:auto;
+}
+span {
+  display: block;
+  text-align: center;
+}

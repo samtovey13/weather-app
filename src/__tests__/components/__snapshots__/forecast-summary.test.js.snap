@@ -9,7 +9,7 @@ exports[`ForecastSummary renders correctly 1`] = `
       class="date"
       data-testid="date-id"
     >
-      1525046400000
+      Mon 30th Apr
     </span>
     <span
       class="temperature"
@@ -27,13 +27,12 @@ exports[`ForecastSummary renders correctly 1`] = `
       class="icon"
       data-testid="icon-id"
     >
-      721
+      <i
+        class="wi wi-day-thunderstorm"
+        data-testid="weather-icon-id"
+        name="owm"
+      />
     </span>
-    <button
-      value="1525046400000"
-    >
-      More Details
-    </button>
   </div>
 </DocumentFragment>
 `;

@@ -12,7 +12,7 @@ exports[`ForecastSummaries renders the correct amount of ForecastSummary compone
         class="date"
         data-testid="date-id"
       >
-        123
+        Thu 1st Jan
       </span>
       <span
         class="temperature"
@@ -30,13 +30,12 @@ exports[`ForecastSummaries renders the correct amount of ForecastSummary compone
         class="icon"
         data-testid="icon-id"
       >
-        icon1
+        <i
+          class="wi wi-day-thunderstorm"
+          data-testid="weather-icon-id"
+          name="owm"
+        />
       </span>
-      <button
-        value="123"
-      >
-        More Details
-      </button>
     </div>
     <div
       class="forecast-summary-card"
@@ -45,7 +44,7 @@ exports[`ForecastSummaries renders the correct amount of ForecastSummary compone
         class="date"
         data-testid="date-id"
       >
-        456
+        Thu 1st Jan
       </span>
       <span
         class="temperature"
@@ -63,13 +62,12 @@ exports[`ForecastSummaries renders the correct amount of ForecastSummary compone
         class="icon"
         data-testid="icon-id"
       >
-        icon2
+        <i
+          class="wi wi-day-sunny"
+          data-testid="weather-icon-id"
+          name="owm"
+        />
       </span>
-      <button
-        value="456"
-      >
-        More Details
-      </button>
     </div>
   </div>
 </DocumentFragment>

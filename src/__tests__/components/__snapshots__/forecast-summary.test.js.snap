@@ -33,6 +33,9 @@ exports[`ForecastSummary renders correctly 1`] = `
         name="owm"
       />
     </span>
+    <button>
+      More Details
+    </button>
   </div>
 </DocumentFragment>
 `;

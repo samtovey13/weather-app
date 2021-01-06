@@ -13,6 +13,7 @@ const ForecastSummaries = props => (
           description={forecast.description}
           icon={forecast.icon}
           temperature={forecast.temperature.max}
+          onSelect={props.onForecastSelect}
         />
       ))
     }
@@ -20,11 +21,16 @@ const ForecastSummaries = props => (
   </div>
 );
 
-ForecastSummary.propTypes = {
-  date: PropTypes.number.isRequired,
-  icon: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  temperature: PropTypes.number.isRequired,
+ForecastSummaries.propTypes = {
+  forecasts: PropTypes.arrayOf(
+    PropTypes.shape({
+      date: PropTypes.number,
+      icon: PropTypes.string,
+      description: PropTypes.string,
+      temperature: PropTypes.object,
+    }).isRequired
+  ),
+  onForecastSelect: PropTypes.func.isRequired,
 };
 
 export default ForecastSummaries;

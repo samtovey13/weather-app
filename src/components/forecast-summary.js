@@ -8,7 +8,7 @@ const ForecastSummary = ({
   temperature,
   description,
   icon,
-  // handleForecastSelect,
+  onSelect,
 }) => {
   return (
     <div className="forecast-summary-card">
@@ -24,9 +24,9 @@ const ForecastSummary = ({
       <span className="icon" data-testid="icon-id">
         <WeatherIcon name="owm" iconId={icon} data-testid="weather-icon-id"/>
       </span>
-      {/* <button value={date} onClick={handleForecastSelect}>
+      <button onClick={() => onSelect(date)}>
         More Details
-      </button> */}
+      </button>
     </div>
   );
 };
@@ -36,6 +36,7 @@ ForecastSummary.propTypes = {
   icon: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   temperature: PropTypes.number.isRequired,
+  onSelect: PropTypes.func.isRequired,
 };
 
 export default ForecastSummary;

@@ -3,6 +3,7 @@ import { render } from "@testing-library/react";
 import ForecastSummary from '../../components/forecast-summary';
 
 describe("ForecastSummary", () => {
+  const onSelect = function() {};
 
   it("renders correctly", () => {
     const { asFragment } = render(
@@ -10,7 +11,8 @@ describe("ForecastSummary", () => {
         date={1525046400000} 
         icon="211"
         description="Hazy" 
-        temperature={10} 
+        temperature={10}
+        onSelect={onSelect}
       />
     );
 
@@ -23,7 +25,8 @@ describe("ForecastSummary", () => {
         date={1525046400000} 
         icon="211"
         description="Hazy" 
-        temperature={10} 
+        temperature={10}
+        onSelect={onSelect} 
       />
     );
 
@@ -38,7 +41,8 @@ describe("ForecastSummary", () => {
         date={1525046400000} 
         icon="211"
         description="Hazy" 
-        temperature={10} 
+        temperature={10}
+        onSelect={onSelect}
       />
     );
 

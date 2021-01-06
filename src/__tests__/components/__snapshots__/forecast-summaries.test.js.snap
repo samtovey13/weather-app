@@ -36,6 +36,9 @@ exports[`ForecastSummaries renders the correct amount of ForecastSummary compone
           name="owm"
         />
       </span>
+      <button>
+        More Details
+      </button>
     </div>
     <div
       class="forecast-summary-card"
@@ -68,6 +71,9 @@ exports[`ForecastSummaries renders the correct amount of ForecastSummary compone
           name="owm"
         />
       </span>
+      <button>
+        More Details
+      </button>
     </div>
   </div>
 </DocumentFragment>

@@ -1,21 +1,31 @@
 import '../styles/App.css';
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import LocationDetails from './location-details';
 import ForecastSummaries from './forecast-summaries';
 import ForecastDetails from './forecast-details';
 
 const App = props => {
+  const [selectedDate, setSelectedDate] = useState(props.forecasts[0].date);
+
+  const selectedForecast = props.forecasts.find(forecast => 
+    forecast.date === selectedDate);
+  
+  const handleForecastSelect = (date) => {
+    setSelectedDate(date);
+  }
+
   return <div className="forecast">
     <LocationDetails 
       city={props.location.city} 
       country={props.location.country}
     />
     <ForecastSummaries 
-      forecasts={props.forecasts} 
+      forecasts={props.forecasts}
+      onForecastSelect={handleForecastSelect}
     />
     <ForecastDetails 
-      forecast={props.forecasts[0]}
+      forecast={selectedForecast}
     />
   </div>
 };

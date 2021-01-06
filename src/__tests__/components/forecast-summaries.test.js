@@ -22,16 +22,18 @@ describe("ForecastSummaries", () => {
       },
     },
   ];
+  const onSelect = function() {};
+
 
   it("renders the correct amount of ForecastSummary components", () => {
-    const { asFragment } = render(<ForecastSummaries forecasts={forecasts} />);
+    const { asFragment } = render(<ForecastSummaries forecasts={forecasts} onForecastSelect={onSelect} />);
     
     expect(asFragment()).toMatchSnapshot();
   });
 
   it("renders the correct amount of ForecastSummary component props", () => {
     const { getAllByTestId } = render(
-      <ForecastSummaries forecasts={forecasts} />
+      <ForecastSummaries forecasts={forecasts} onForecastSelect={onSelect}/>
     );
     
     expect(getAllByTestId("date-id")).toHaveLength(2);

@@ -1,25 +1,25 @@
 import '../styles/App.css';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-// import PropTypes from 'prop-types';
 import LocationDetails from './location-details';
 import ForecastSummaries from './forecast-summaries';
 import ForecastDetails from './forecast-details';
+import SearchForm from './search-form';
 
 const App = () => {
   const [forecasts, setForecasts] = useState([]);
-  const [location, setLocation] = useState({ city: '', country: '' });
+  const [location, setLocation] = useState({ city: 'Edinburgh', country: '' });
   const [selectedDate, setSelectedDate] = useState(0);
   
   useEffect( () => {
-    axios.get(`https://mcr-codes-weather.herokuapp.com/forecast?city=Edinburgh`)
+    axios.get(`https://mcr-codes-weather.herokuapp.com/forecast?city=${location.city}`)
     .then(res => {
-      console.log("useEffect");
       setLocation(res.data.location);
       setForecasts(res.data.forecasts);
+      document.getElementById("location-search-input").value = "";
     })
     .catch((error) => console.log(error))
-  }, []);
+  }, [location.city]);
 
   const selectedForecast = forecasts.find(forecast => 
     forecast.date === selectedDate);
@@ -28,10 +28,24 @@ const App = () => {
     setSelectedDate(date);
   }
 
+  const handleSearchText = (searchText) => {
+    axios.get(`https://mcr-codes-weather.herokuapp.com/forecast?city=${searchText}`)
+    .then(res => {
+      setLocation(res.data.location);
+      setForecasts(res.data.forecasts);
+      document.getElementById("location-search-input").value = "";
+    })
+    .catch((error) => console.log(error))
+  };
+  
+
   return <div className="forecast">
     <LocationDetails 
       city={location.city} 
       country={location.country}
+    />
+    <SearchForm
+      handleSearchText={handleSearchText}
     />
     <ForecastSummaries 
       forecasts={forecasts}
@@ -43,29 +57,5 @@ const App = () => {
     
   </div>
 };
-
-
-// App.propTypes = {
-//   location: PropTypes.shape({
-//     city: PropTypes.string,
-//     country: PropTypes.string,
-//   }).isRequired,
-//   forecasts: PropTypes.arrayOf(
-//     PropTypes.shape({
-//       date: PropTypes.number,
-//       temperature: PropTypes.shape({
-//         max: PropTypes.number,
-//         min: PropTypes.number
-//       }),
-//       wind: PropTypes.shape({
-//         speed: PropTypes.number,
-//         direction: PropTypes.string
-//       }),
-//       humidity: PropTypes.number,
-//       description: PropTypes.string,
-//       icon: PropTypes.string
-//     })
-//   ).isRequired,
-// };
 
 export default App;

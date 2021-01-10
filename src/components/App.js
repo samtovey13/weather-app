@@ -10,15 +10,26 @@ const App = () => {
   const [forecasts, setForecasts] = useState([]);
   const [location, setLocation] = useState({ city: 'Edinburgh', country: '' });
   const [selectedDate, setSelectedDate] = useState(0);
-  
+  const [errorMessage, setErrorMessage] = useState("");
+
   const getForecasts = (city) => {
     axios.get(`https://mcr-codes-weather.herokuapp.com/forecast?city=${city}`)
     .then(res => {
-      setLocation(res.data.location);
-      setForecasts(res.data.forecasts);
+      if (res.status === 200) {
+        setLocation(res.data.location);
+        setForecasts(res.data.forecasts);
+        setErrorMessage("");
+        document.getElementById("location-search-input").value = "";
+      }
+    })
+    .catch((error) => {
+      if (error.response.status === 404) {
+        setErrorMessage(`Sorry, ${city} isn't available. Please choose another city.`)
+      } else if (error.response.status === 500) {
+        setErrorMessage("Oops! Something went wrong. Please try again later.")
+      }
       document.getElementById("location-search-input").value = "";
     })
-    .catch((error) => console.log(error))
   }
   
   useEffect( () => {
@@ -44,6 +55,7 @@ const App = () => {
     />
     <SearchForm
       handleSearchText={handleSearchText}
+      errorMessage={errorMessage}
     />
     <ForecastSummaries 
       forecasts={forecasts}

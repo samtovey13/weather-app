@@ -5,7 +5,7 @@ const SearchForm = (props) => {
   const handleInputChange = (event) => {
     setSearchText(event.target.value);
   }
-  const handleSearchText = props.handleSearchText;
+  const {handleSearchText, errorMessage} = props;
 
   return <div className="search-form">
     <input 
@@ -30,6 +30,10 @@ const SearchForm = (props) => {
     >
       Search
     </button>
+
+    { errorMessage && (<div className="error-message">
+      Error: {errorMessage}
+    </div>)}
   </div>
 }
 

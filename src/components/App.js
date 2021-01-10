@@ -49,14 +49,16 @@ const App = () => {
   
 
   return <div className="forecast">
-    <LocationDetails 
-      city={location.city} 
-      country={location.country}
-    />
-    <SearchForm
-      handleSearchText={handleSearchText}
-      errorMessage={errorMessage}
-    />
+    <div className="location-details-wrapper">
+      <LocationDetails 
+        city={location.city} 
+        country={location.country}
+      />
+      <SearchForm
+        handleSearchText={handleSearchText}
+        errorMessage={errorMessage}
+      />
+    </div>
     <ForecastSummaries 
       forecasts={forecasts}
       onForecastSelect={handleForecastSelect}

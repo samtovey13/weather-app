@@ -1,7 +1,6 @@
 .forecast-summaries {
   display: flex;
   justify-content: space-between;
-}
-span {
-  display: block;
+  margin: 20px auto;
+  max-width: 550px;
 }

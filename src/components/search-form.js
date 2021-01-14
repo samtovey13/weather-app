@@ -13,15 +13,15 @@ const SearchForm = (props) => {
       <input 
         className="search-input"
         id="location-search-input"
-        type="text"
+        type="search"
         placeholder="Find a city"
-        value={searchText}
         onChange={(event) => {
           handleInputChange(event);
         }}
         onKeyUp={(event) => {
           if (event.key === "Enter") {
             handleSearchText(searchText);
+            document.getElementById("location-search-input").value = "";
           }
         }}
       >

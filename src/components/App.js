@@ -19,7 +19,6 @@ const App = () => {
         setLocation(res.data.location);
         setForecasts(res.data.forecasts);
         setErrorMessage("");
-        document.getElementById("location-search-input").value = "";
       }
     })
     .catch((error) => {
@@ -28,7 +27,6 @@ const App = () => {
       } else if (error.response.status === 500) {
         setErrorMessage("Oops! Something went wrong. Please try again later.")
       }
-      document.getElementById("location-search-input").value = "";
     })
   }
   

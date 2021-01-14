@@ -12,8 +12,8 @@ const App = () => {
   const [selectedDate, setSelectedDate] = useState(0);
   const [errorMessage, setErrorMessage] = useState("");
 
-  const getForecasts = (city) => {
-    axios.get(`https://mcr-codes-weather.herokuapp.com/forecast?city=${city}`)
+  const getForecasts = async (city) => {
+    await axios.get(`https://mcr-codes-weather.herokuapp.com/forecast?city=${city}`)
     .then(res => {
       if (res.status === 200) {
         setLocation(res.data.location);

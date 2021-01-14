@@ -8,7 +8,7 @@ import SearchForm from './search-form';
 
 const App = () => {
   const [forecasts, setForecasts] = useState([]);
-  const [location, setLocation] = useState({ city: 'Edinburgh', country: '' });
+  const [location, setLocation] = useState({ city: 'Edinburgh', country: 'GB' });
   const [selectedDate, setSelectedDate] = useState(0);
   const [errorMessage, setErrorMessage] = useState("");
 

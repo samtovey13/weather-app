@@ -6,6 +6,8 @@
   border-radius: 20px;
   padding: 10px;
   max-width: 850px;
+  opacity: 1;
+  animation: fadeIn 3s ease;
 }
 
 .location-details-wrapper {
@@ -17,4 +19,13 @@
 button, input {
   box-shadow: 0 4px 8px #1a1a1a;
   border-radius: 10px;
+}
+
+@keyframes fadeIn{
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
 }

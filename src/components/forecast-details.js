@@ -5,7 +5,7 @@ import '../styles/forecast-details.css';
 
 const ForecastDetails = ({ forecast }) => {
   return <div className="forecast-details">
-    <span className="date" data-testid="date-id">
+    <span className="date" data-testid="date-id" id="forecast-details-date" value={forecast.date}>
       {moment(forecast.date).format("ddd Do MMM")}
     </span>
     <span className="min-temperature" data-testid="min-temperature-id">

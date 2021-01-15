@@ -11,6 +11,7 @@ const App = () => {
   const [location, setLocation] = useState({ city: 'Edinburgh', country: 'GB' });
   const [selectedDate, setSelectedDate] = useState(0);
   const [errorMessage, setErrorMessage] = useState("");
+  const [showDetails, setShowDetails] = useState(false);
 
   const getForecasts = async (city) => {
     await axios.get(`https://mcr-codes-weather.herokuapp.com/forecast?city=${city}`)
@@ -41,10 +42,13 @@ const App = () => {
     setSelectedDate(date);
   }
 
+  const handleShowDetails = (b) => {
+    setShowDetails(b);
+  }
+
   const handleSearchText = (searchText) => {
     getForecasts(searchText);
   };
-  
 
   return <div className="forecast">
     <div className="location-details-wrapper">
@@ -60,9 +64,12 @@ const App = () => {
     <ForecastSummaries 
       forecasts={forecasts}
       onForecastSelect={handleForecastSelect}
+      handleShowDetails={handleShowDetails}
     />
     {
-      selectedForecast && (<ForecastDetails forecast={selectedForecast} /> )
+      selectedForecast && showDetails && (<ForecastDetails 
+        forecast={selectedForecast}
+        /> )
     }
     
   </div>

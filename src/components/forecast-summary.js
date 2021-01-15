@@ -10,10 +10,21 @@ const ForecastSummary = ({
   description,
   icon,
   onSelect,
+  handleShowDetails,
 }) => {
+  const clickFunction = (date) => {
+    const detailsDate = document.getElementById("forecast-details-date");
+    if (detailsDate && (parseInt(detailsDate.getAttribute("value")) === date)) {
+      handleShowDetails(false);
+    } else {
+      onSelect(date);
+      handleShowDetails(true);
+    }
+  }
+
   return (
     <div className="forecast-summary">
-      <span className="date" data-testid="date-id">
+      <span className="date" data-testid="date-id" >
         {moment(date).format("ddd Do MMM")}
       </span>
       <span className="temperature" data-testid="temperature-id">
@@ -25,7 +36,7 @@ const ForecastSummary = ({
       <span className="icon" data-testid="icon-id">
         <WeatherIcon name="owm" iconId={icon} data-testid="weather-icon-id"/>
       </span>
-      <button className="details-button" onClick={() => onSelect(date)}>
+      <button className="details-button" onClick={() => {clickFunction(date)}}>
         More Details
       </button>
     </div>
@@ -38,6 +49,7 @@ ForecastSummary.propTypes = {
   description: PropTypes.string.isRequired,
   temperature: PropTypes.number.isRequired,
   onSelect: PropTypes.func.isRequired,
+  handleShowDetails: PropTypes.func.isRequired,
 };
 
 export default ForecastSummary;

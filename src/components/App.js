@@ -51,21 +51,28 @@ const App = () => {
   };
 
   return <div className="forecast">
-    <div className="location-details-wrapper">
-      <LocationDetails 
-        city={location.city} 
-        country={location.country}
-      />
-      <SearchForm
-        handleSearchText={handleSearchText}
-        errorMessage={errorMessage}
-      />
-    </div>
-    <ForecastSummaries 
+    {
+      forecasts[0] && (<div className="location-details-wrapper">
+        <LocationDetails 
+          city={location.city} 
+          country={location.country}
+        />
+        <SearchForm
+          handleSearchText={handleSearchText}
+          errorMessage={errorMessage}
+        />
+      </div>
+      )
+    }
+    {
+      forecasts[0] && (<ForecastSummaries 
       forecasts={forecasts}
       onForecastSelect={handleForecastSelect}
       handleShowDetails={handleShowDetails}
     />
+      )
+    }
+        
     {
       selectedForecast && showDetails && (<ForecastDetails 
         forecast={selectedForecast}

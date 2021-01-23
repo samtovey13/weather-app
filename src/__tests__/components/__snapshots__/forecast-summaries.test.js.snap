@@ -6,7 +6,7 @@ exports[`ForecastSummaries renders the correct amount of ForecastSummary compone
     class="forecast-summaries"
   >
     <div
-      class="forecast-summary-card"
+      class="forecast-summary"
     >
       <span
         class="date"
@@ -36,12 +36,14 @@ exports[`ForecastSummaries renders the correct amount of ForecastSummary compone
           name="owm"
         />
       </span>
-      <button>
+      <button
+        class="details-button"
+      >
         More Details
       </button>
     </div>
     <div
-      class="forecast-summary-card"
+      class="forecast-summary"
     >
       <span
         class="date"
@@ -71,7 +73,9 @@ exports[`ForecastSummaries renders the correct amount of ForecastSummary compone
           name="owm"
         />
       </span>
-      <button>
+      <button
+        class="details-button"
+      >
         More Details
       </button>
     </div>

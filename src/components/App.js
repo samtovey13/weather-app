@@ -1,10 +1,10 @@
 import '../styles/App.css';
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import LocationDetails from './location-details';
 import ForecastSummaries from './forecast-summaries';
 import ForecastDetails from './forecast-details';
 import SearchForm from './search-form';
+import getForecastData from '../services/getForecasts';
 
 const App = () => {
   const [forecasts, setForecasts] = useState([]);
@@ -14,23 +14,22 @@ const App = () => {
   const [showDetails, setShowDetails] = useState(false);
 
   const getForecasts = async (city) => {
-    await axios.get(`https://mcr-codes-weather.herokuapp.com/forecast?city=${city}`)
-    .then(res => {
+    try {
+      const res = await getForecastData(city);
       if (res.status === 200) {
         setLocation(res.data.location);
         setForecasts(res.data.forecasts);
         setErrorMessage("");
-      }
-    })
-    .catch((error) => {
-      if (error.response.status === 404) {
+      } else if (res.response.status === 404) {
         setErrorMessage(`Sorry, ${city} isn't available. Please choose another city.`)
-      } else if (error.response.status === 500) {
+      } else {
         setErrorMessage("Oops! Something went wrong. Please try again later.")
       }
-    })
+    } catch (error) {
+      setErrorMessage("Oops! Something went wrong. Please try again later.")
+    }
   }
-  
+
   useEffect( () => {
     getForecasts(location.city)
   }, [location.city]);

@@ -8,6 +8,8 @@ exports[`ForecastDetails renders correctly 1`] = `
     <span
       class="date"
       data-testid="date-id"
+      id="forecast-details-date"
+      value="1525219200000"
     >
       Wed 2nd May
     </span>

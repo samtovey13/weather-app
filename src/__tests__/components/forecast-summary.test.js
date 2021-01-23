@@ -13,6 +13,7 @@ describe("ForecastSummary", () => {
         description="Hazy" 
         temperature={10}
         onSelect={onSelect}
+        handleShowDetails={function(){}}
       />
     );
 
@@ -26,7 +27,8 @@ describe("ForecastSummary", () => {
         icon="211"
         description="Hazy" 
         temperature={10}
-        onSelect={onSelect} 
+        onSelect={onSelect}
+        handleShowDetails={function(){}}
       />
     );
 
@@ -43,6 +45,7 @@ describe("ForecastSummary", () => {
         description="Hazy" 
         temperature={10}
         onSelect={onSelect}
+        handleShowDetails={function(){}}
       />
     );
 

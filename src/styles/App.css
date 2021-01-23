@@ -1,4 +1,4 @@
-.forecast {
+.forecast, .loading-message-wrapper {
   margin: auto 10px;
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
   box-sizing: border-box;
@@ -10,10 +10,25 @@
   animation: fadeIn 2s ease;
 }
 
+.loading-message-wrapper {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: flash 0.7s linear infinite alternate running;
+}
+
 .location-details-wrapper {
   margin: 20px auto;
   display: flex;
   flex-flow: column nowrap;
+}
+
+.loading-message {
+  letter-spacing: 2px;
+  font-size: 24px;
 }
 
 button, input {
@@ -27,5 +42,17 @@ button, input {
   }
   100%{
     opacity: 1;
+  }
+}
+
+@keyframes flash {
+  0%{
+    opacity: 0.3;
+  }
+  60%{
+    opacity: 0.8;
+  }
+  100%{
+    opacity: 0.95;
   }
 }

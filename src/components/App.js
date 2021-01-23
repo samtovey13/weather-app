@@ -12,6 +12,7 @@ const App = () => {
   const [selectedDate, setSelectedDate] = useState(0);
   const [errorMessage, setErrorMessage] = useState("");
   const [showDetails, setShowDetails] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const getForecasts = async (city) => {
     try {
@@ -31,7 +32,8 @@ const App = () => {
   }
 
   useEffect( () => {
-    getForecasts(location.city)
+    getForecasts(location.city);
+    setIsLoading(false);
   }, [location.city]);
 
   const selectedForecast = forecasts.find(forecast => 
@@ -48,6 +50,10 @@ const App = () => {
   const handleSearchText = (searchText) => {
     getForecasts(searchText);
   };
+
+  if (isLoading) {
+    return <div className="loading-message-wrapper"><div className="loading-message">...loading...</div></div>
+  }
 
   return <div className="forecast">
     {

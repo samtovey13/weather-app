@@ -26,14 +26,15 @@ const App = () => {
       } else {
         setErrorMessage("Oops! Something went wrong. Please try again later.")
       }
+      setIsLoading(false);
     } catch (error) {
-      setErrorMessage("Oops! Something went wrong. Please try again later.")
+      setErrorMessage("Oops! Something went wrong. Please try again later.");
+      setIsLoading(false);
     }
   }
 
   useEffect( () => {
     getForecasts(location.city);
-    setIsLoading(false);
   }, [location.city]);
 
   const selectedForecast = forecasts.find(forecast => 
@@ -55,9 +56,9 @@ const App = () => {
     return <div className="loading-message-wrapper"><div className="loading-message">...loading...</div></div>
   }
 
-  return <div className="forecast">
-    {
-      forecasts[0] && (<div className="location-details-wrapper">
+  return (
+    <div className="forecast">
+      <div className="location-details-wrapper">
         <LocationDetails 
           city={location.city} 
           country={location.country}
@@ -67,24 +68,19 @@ const App = () => {
           errorMessage={errorMessage}
         />
       </div>
-      )
-    }
-    {
-      forecasts[0] && (<ForecastSummaries 
-      forecasts={forecasts}
-      onForecastSelect={handleForecastSelect}
-      handleShowDetails={handleShowDetails}
-    />
-      )
-    }
-        
-    {
-      selectedForecast && showDetails && (<ForecastDetails 
-        forecast={selectedForecast}
-        /> )
-    }
-    
-  </div>
+      <ForecastSummaries 
+        forecasts={forecasts}
+        onForecastSelect={handleForecastSelect}
+        handleShowDetails={handleShowDetails}
+      />
+      {
+        selectedForecast && showDetails && (<ForecastDetails 
+          forecast={selectedForecast}
+          /> )
+      }
+    </div>
+  );
+  
 };
 
 export default App;

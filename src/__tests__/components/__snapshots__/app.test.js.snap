@@ -1,0 +1,189 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App renders a 404 error correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="forecast"
+  >
+    <div
+      class="location-details-wrapper"
+    >
+      <h1
+        class="location-details"
+      >
+        Edinburgh, GB
+      </h1>
+      <div
+        class="search-form"
+      >
+        <div
+          id="search-input-wrapper"
+        >
+          <input
+            class="search-input"
+            id="location-search-input"
+            placeholder="Find a city"
+            type="search"
+          />
+          <button
+            class="search-button"
+          >
+            <i
+              class="fa fa-search"
+            />
+          </button>
+        </div>
+        <div
+          class="error-message"
+        >
+          Sorry, Edinburgh isn't available. Please choose another city.
+        </div>
+      </div>
+    </div>
+    <div
+      class="forecast-summaries"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`App renders any other errors correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="forecast"
+  >
+    <div
+      class="location-details-wrapper"
+    >
+      <h1
+        class="location-details"
+      >
+        Edinburgh, GB
+      </h1>
+      <div
+        class="search-form"
+      >
+        <div
+          id="search-input-wrapper"
+        >
+          <input
+            class="search-input"
+            id="location-search-input"
+            placeholder="Find a city"
+            type="search"
+          />
+          <button
+            class="search-button"
+          >
+            <i
+              class="fa fa-search"
+            />
+          </button>
+        </div>
+        <div
+          class="error-message"
+        >
+          Oops! Something went wrong. Please try again later.
+        </div>
+      </div>
+    </div>
+    <div
+      class="forecast-summaries"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`App renders correctly after loading forecasts 1`] = `
+<DocumentFragment>
+  <div
+    class="forecast"
+  >
+    <div
+      class="location-details-wrapper"
+    >
+      <h1
+        class="location-details"
+      >
+        Manchester, GB
+      </h1>
+      <div
+        class="search-form"
+      >
+        <div
+          id="search-input-wrapper"
+        >
+          <input
+            class="search-input"
+            id="location-search-input"
+            placeholder="Find a city"
+            type="search"
+          />
+          <button
+            class="search-button"
+          >
+            <i
+              class="fa fa-search"
+            />
+          </button>
+        </div>
+      </div>
+    </div>
+    <div
+      class="forecast-summaries"
+    >
+      <div
+        class="forecast-summary"
+      >
+        <span
+          class="date"
+          data-testid="date-id"
+        >
+          Mon 30th Apr
+        </span>
+        <span
+          class="temperature"
+          data-testid="temperature-id"
+        >
+          11°c
+        </span>
+        <span
+          class="description"
+          data-testid="description-id"
+        >
+          Clear
+        </span>
+        <span
+          class="icon"
+          data-testid="icon-id"
+        >
+          <i
+            class="wi wi-day-sunny"
+            data-testid="weather-icon-id"
+            name="owm"
+          />
+        </span>
+        <button
+          class="details-button"
+        >
+          More Details
+        </button>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`App renders the loading screen correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="loading-message-wrapper"
+  >
+    <div
+      class="loading-message"
+    >
+      ...loading...
+    </div>
+  </div>
+</DocumentFragment>
+`;

@@ -1,12 +1,10 @@
 import {useState, React} from 'react';
+import PropTypes from 'prop-types';
 import '../styles/search-form.css';
 
-const SearchForm = (props) => {
+const SearchForm = ({handleSearchText, errorMessage}) => {
   const [searchText, setSearchText] = useState("");
-  const handleInputChange = (event) => {
-    setSearchText(event.target.value);
-  }
-  const {handleSearchText, errorMessage} = props;
+  const handleInputChange = (event) => {setSearchText(event.target.value)};
 
   return <div className="search-form">
     <div id="search-input-wrapper">
@@ -29,15 +27,21 @@ const SearchForm = (props) => {
 
       <button 
         className="search-button"
+        data-testid="search-button"
         onClick={() => handleSearchText(searchText)}
       >
         <i className="fa fa-search"></i>
       </button>
     </div>
-    { errorMessage && (<div className="error-message">
+    { errorMessage && (<div className="error-message" data-testid="error-message" >
       {errorMessage}
     </div>)}
   </div>
 }
+
+SearchForm.propTypes = {
+  handleSearchText: PropTypes.func.isRequired,
+  errorMessage: PropTypes.string.isRequired
+};
 
 export default SearchForm;

@@ -1,5 +1,5 @@
 import React from "react";
-import { render, waitFor } from "@testing-library/react";
+import { render, waitFor, fireEvent } from "@testing-library/react";
 import App from '../../components/App';
 
 import getForecastData from '../../services/getForecasts';
@@ -26,6 +26,20 @@ describe("App", () => {
             humidity: 30,
             description: "Clear",
             icon: "800",
+          },
+          {
+            date: 1525132800000,
+            temperature: {
+              max: 13,
+              min: 8
+            },
+            wind: {
+              speed: 60,
+              direction: "ne"
+            },
+            humidity: 80,
+            description: "Stormy",
+            icon: "211"
           },
         ],
       },
@@ -59,6 +73,80 @@ describe("App", () => {
     const { asFragment, getByText } = render(<App />);
     await waitFor(() => expect(getByText(/something went wrong/i)).toBeInTheDocument());
     expect(asFragment()).toMatchSnapshot();
+  });
+
+  it("renders forecast details when button is clicked", async () => {
+    const { getByText, getByTestId } = render(<App />);
+    await waitFor(() => expect(getByText("Clear")).toBeInTheDocument());
+    const detailsButton = getByTestId("details-button-1525046400000");
+
+    fireEvent.click(detailsButton);
+    expect(getByText("Humidity: 30%")).toBeInTheDocument();
+  });
+
+  it("re-renders forecast details if another forecast is selected", async () => {
+    const { getByText, queryByText, getByTestId } = render(<App />);
+    await waitFor(() => expect(getByText("Clear")).toBeInTheDocument());
+    const detailsButton1 = getByTestId("details-button-1525046400000");
+    const detailsButton2 = getByTestId("details-button-1525132800000");
+
+    fireEvent.click(detailsButton1);
+    expect(getByText("Humidity: 30%")).toBeInTheDocument();
+    
+    fireEvent.click(detailsButton2);
+    expect(getByText("Humidity: 80%")).toBeInTheDocument();
+    expect(queryByText("Humidity: 30%")).not.toBeInTheDocument();
+  });
+
+  it("hides forecast details if the selected forecast is clicked again", async () => {
+    const { getByText, queryByText, getByTestId } = render(<App />);
+    await waitFor(() => expect(getByText("Clear")).toBeInTheDocument());
+    const detailsButton = getByTestId("details-button-1525046400000");
+
+    fireEvent.click(detailsButton);
+    expect(getByText("Humidity: 30%")).toBeInTheDocument();
+    
+    fireEvent.click(detailsButton);
+    expect(queryByText("Humidity: 30%")).not.toBeInTheDocument();
+  });
+
+  it('re-renders forecasts on search', async () => {
+    const { getByText, getByRole, getByTestId } = render(<App />);
+    await waitFor(() => expect(getByText("Clear")).toBeInTheDocument());
+
+    const searchInput = getByRole('searchbox');
+    const searchButton = getByTestId('search-button');
+
+    getForecastData.mockResolvedValue({
+      status: 200,
+      data: {
+        location: { city: "Edinburgh", country: "GB" },
+        forecasts: [
+          {
+            date: 1525046400000,
+            temperature: {
+              max: 9,
+              min: 2,
+            },
+            wind: {
+              speed: 25,
+              direction: "n",
+            },
+            humidity: 60,
+            description: "Heavy Snow",
+            icon: "602",
+          }
+        ],
+      },
+    });
+
+    fireEvent.change(searchInput, {
+      target: { value: "Edinburgh" }
+    })
+    fireEvent.click(searchButton);
+
+    await waitFor(() => expect(getByText("Heavy Snow")).toBeInTheDocument());
+    expect(getByText("Edinburgh, GB")).toBeInTheDocument()
   });
 
 })

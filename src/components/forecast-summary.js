@@ -36,8 +36,10 @@ const ForecastSummary = ({
       <span className="icon" data-testid="icon-id">
         <WeatherIcon name="owm" iconId={icon} data-testid="weather-icon-id"/>
       </span>
-      <button className="details-button" onClick={() => {clickFunction(date)}}>
-        More Details
+      <button className="details-button" 
+        data-testid={"details-button-" + date}
+        onClick={() => {clickFunction(date)}}>
+          More Details
       </button>
     </div>
   );

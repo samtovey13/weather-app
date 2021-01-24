@@ -27,6 +27,7 @@ exports[`App renders a 404 error correctly 1`] = `
           />
           <button
             class="search-button"
+            data-testid="search-button"
           >
             <i
               class="fa fa-search"
@@ -35,6 +36,7 @@ exports[`App renders a 404 error correctly 1`] = `
         </div>
         <div
           class="error-message"
+          data-testid="error-message"
         >
           Sorry, Edinburgh isn't available. Please choose another city.
         </div>
@@ -74,6 +76,7 @@ exports[`App renders any other errors correctly 1`] = `
           />
           <button
             class="search-button"
+            data-testid="search-button"
           >
             <i
               class="fa fa-search"
@@ -82,6 +85,7 @@ exports[`App renders any other errors correctly 1`] = `
         </div>
         <div
           class="error-message"
+          data-testid="error-message"
         >
           Oops! Something went wrong. Please try again later.
         </div>
@@ -121,6 +125,7 @@ exports[`App renders correctly after loading forecasts 1`] = `
           />
           <button
             class="search-button"
+            data-testid="search-button"
           >
             <i
               class="fa fa-search"
@@ -165,6 +170,45 @@ exports[`App renders correctly after loading forecasts 1`] = `
         </span>
         <button
           class="details-button"
+          data-testid="details-button-1525046400000"
+        >
+          More Details
+        </button>
+      </div>
+      <div
+        class="forecast-summary"
+      >
+        <span
+          class="date"
+          data-testid="date-id"
+        >
+          Tue 1st May
+        </span>
+        <span
+          class="temperature"
+          data-testid="temperature-id"
+        >
+          13°c
+        </span>
+        <span
+          class="description"
+          data-testid="description-id"
+        >
+          Stormy
+        </span>
+        <span
+          class="icon"
+          data-testid="icon-id"
+        >
+          <i
+            class="wi wi-day-thunderstorm"
+            data-testid="weather-icon-id"
+            name="owm"
+          />
+        </span>
+        <button
+          class="details-button"
+          data-testid="details-button-1525132800000"
         >
           More Details
         </button>

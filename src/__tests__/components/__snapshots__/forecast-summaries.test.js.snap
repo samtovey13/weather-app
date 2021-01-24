@@ -38,6 +38,7 @@ exports[`ForecastSummaries renders the correct amount of ForecastSummary compone
       </span>
       <button
         class="details-button"
+        data-testid="details-button-123"
       >
         More Details
       </button>
@@ -75,6 +76,7 @@ exports[`ForecastSummaries renders the correct amount of ForecastSummary compone
       </span>
       <button
         class="details-button"
+        data-testid="details-button-456"
       >
         More Details
       </button>
